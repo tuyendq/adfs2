@@ -8,9 +8,13 @@ namespace adfs2.Controllers
     {
         // GET: /Account/
         [AllowAnonymous]
-        public string Index()
+        // public string Index()
+        // {
+        //     return "This is my default action...";
+        // }
+        public IActionResult Index()
         {
-            return "This is my default action...";
+            return View();
         }
 
         // GET: /Account/Welcome/
