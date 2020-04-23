@@ -24,8 +24,10 @@ namespace adfs2
 
             services.AddControllersWithViews();
             // Add database context
+            // services.AddDbContext<adfs2Context>(options =>
+            //     options.UseSqlite(Configuration.GetConnectionString("adfs2Context")));
             services.AddDbContext<adfs2Context>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("adfs2Context")));
+                options.UseSqlite(Configuration.GetConnectionString("adfs2Context")));                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

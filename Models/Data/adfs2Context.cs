@@ -8,6 +8,7 @@ namespace adfs2.Data
     public class adfs2Context : DbContext
     {
         public adfs2Context (DbContextOptions<adfs2Context> options)
+            : base(options)
         {
         }
 
