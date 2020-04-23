@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace adfs2.Models
 {
+    // Think of Movie class as a table named 'Movie'
+    // with columms Id, Title, ReleaseDate, Genre, Price
     public class Movie
     {
         public int Id { get; set; }

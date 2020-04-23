@@ -1,5 +1,7 @@
+using adfs2.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,6 +23,9 @@ namespace adfs2
             // Add authentication
 
             services.AddControllersWithViews();
+            // Add database context
+            services.AddDbContext<adfs2Context>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("adfs2Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
