@@ -14,5 +14,7 @@ namespace adfs2.Data
 
         public DbSet<Movie> Movie { get; set; }
 
+        public DbSet<Director> Director { get; set; }
+
     }
 }
