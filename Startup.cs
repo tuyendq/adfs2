@@ -24,7 +24,7 @@ namespace adfs2
         {
             // Add authentication
 
-            services.AddControllersWithViews();
+            // services.AddControllersWithViews();
             // Add database context
             // services.AddDbContext<adfs2Context>(options =>
             //     options.UseSqlServer(Configuration.GetConnectionString("adfs2Context")));
@@ -39,7 +39,18 @@ namespace adfs2
                     Configuration.GetConnectionString("adfs2IdentityDbContextConnectionDev")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<adfs2IdentityDbContext>();                                    
-            
+
+            // Add Authentication
+            services.AddAuthentication()
+                .AddWsFederation(options =>
+                {
+                    // MetadataAddress
+                    options.MetadataAddress =  Configuration["WsFed:MetadataAddress"];
+                    // Wtrealm
+                    options.Wtrealm = Configuration["WsFed:Wtrealm"];
+                    // For AAD
+                    // options.Wtrealm = Configuration["WsFed:AADWtrealm"];
+                });
             services.AddControllersWithViews();
         }
 
@@ -69,7 +80,6 @@ namespace adfs2
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-
                     // Try settings /Account/Welcome as default home page
                     // pattern: "{controller=Account}/{action=Welcome}/{id?}");
                     pattern: "{controller=Home}/{action=Index}/{id?}");
